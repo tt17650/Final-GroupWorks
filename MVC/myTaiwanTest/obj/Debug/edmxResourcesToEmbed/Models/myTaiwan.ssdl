@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="myTaiwanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Counties">
+    <Key>
+      <PropertyRef Name="countryID" />
+    </Key>
+    <Property Name="countryID" Type="int" Nullable="false" />
+    <Property Name="countryName" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Friends">
+    <Key>
+      <PropertyRef Name="FID" />
+    </Key>
+    <Property Name="FID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="friendID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="imageID" />
+    </Key>
+    <Property Name="imageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imgUrl" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="txtID" Type="int" Nullable="false" />
+    <Property Name="location" Type="int" Nullable="false" />
+    <Property Name="imgDescription" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pictures">
+    <Key>
+      <PropertyRef Name="picID" />
+    </Key>
+    <Property Name="picID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="picUrl" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="txtID" Type="int" Nullable="false" />
+    <Property Name="location" Type="int" Nullable="false" />
+    <Property Name="picDescription" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sign">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="passwords" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="faceUrl" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="coverUrl" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Texts">
+    <Key>
+      <PropertyRef Name="txtID" />
+    </Key>
+    <Property Name="txtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="txtTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="txtText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="txtCreateTime" Type="datetime" Nullable="false" />
+    <Property Name="txtUpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="location" Type="int" Nullable="false" />
+    <Property Name="locationDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Friends__userID__25869641">
+    <End Role="Sign" Type="Self.Sign" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Friends" Type="Self.Friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sign">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Texts__location__08B54D69">
+    <End Role="Counties" Type="Self.Counties" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Texts" Type="Self.Texts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counties">
+        <PropertyRef Name="countryID" />
+      </Principal>
+      <Dependent Role="Texts">
+        <PropertyRef Name="location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Texts__userID__2B3F6F97">
+    <End Role="Sign" Type="Self.Sign" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Texts" Type="Self.Texts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sign">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Texts">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_BrowseSingleText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="txtID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BrowseText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="friendID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_BrowseTextbyCounty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="friendID" Type="int" Mode="In" />
+    <Parameter Name="location" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_setCoverUrl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CoverUrl" Type="varchar" Mode="In" />
+    <Parameter Name="userID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_setFaceUrl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FaceUrl" Type="varchar" Mode="In" />
+    <Parameter Name="userID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="myTaiwanModelStoreContainer">
+    <EntitySet Name="Counties" EntityType="Self.Counties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Friends" EntityType="Self.Friends" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sign" EntityType="Self.Sign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Texts" EntityType="Self.Texts" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Friends__userID__25869641" Association="Self.FK__Friends__userID__25869641">
+      <End Role="Sign" EntitySet="Sign" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Texts__location__08B54D69" Association="Self.FK__Texts__location__08B54D69">
+      <End Role="Counties" EntitySet="Counties" />
+      <End Role="Texts" EntitySet="Texts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Texts__userID__2B3F6F97" Association="Self.FK__Texts__userID__2B3F6F97">
+      <End Role="Sign" EntitySet="Sign" />
+      <End Role="Texts" EntitySet="Texts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

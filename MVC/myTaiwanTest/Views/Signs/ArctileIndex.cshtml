@@ -1,0 +1,39 @@
+﻿
+@using myTaiwanTest.Models
+@model FriendPlusDelFriend
+@{
+    Layout = "~/Views/layout/_ArctileLayout.cshtml";
+}
+<h3><i class="fa fa-angle-right"></i> 我的貼文</h3>
+<div class="row">
+    @{
+        foreach (var articles in Model.locationInModel)
+        {
+            <div class="col-lg-4 col-md-4 col-sm-4 mb">
+                <div class="content-panel pn">
+                    <div id="blog-bg">
+                        <div class="blog-title">@articles.city</div>
+                        <div class="blog-btn" id="manger" onclick="mangerarticle()">
+                            <p onclick="delText(@articles.txtID)">刪除貼文</p>
+                        </div>
+                    </div>
+                    <div class="blog-text">
+                        <div class="blog-dis">@articles.txtTitle</div>
+                        <div class="blog-date">@articles.txtCreateTime</div>
+                        <p>@Html.Raw(articles.txtText)</p>
+                    </div>
+                </div>
+            </div><!-- /col-md-4-->
+
+        }
+
+
+    }
+</div>  
+
+<script>
+    function delText(id) {
+        window.location.href = "/signs/delText/"+id;
+    }
+
+</script>

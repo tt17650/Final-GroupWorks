@@ -1,0 +1,16 @@
+﻿@using myTaiwanTest.Models
+@model AddEditTextModel
+@{
+    Layout = "~/Views/layout/_SingleTextLayout.cshtml";
+}
+
+
+
+        <div class="">
+            <div class="">
+                <label style="font-size:larger">@Model.SingleText.txtTitle</label><br />
+                <label style="font-size:large;float:left">@Model.SingleText.countryName</label>
+                <label style="font-size:large;float:right">@Model.SingleText.txtCreateTime</label><br />
+                <label style="word-break: break-all">@Html.Raw(Model.SingleText.txtText)</label>
+            </div>
+        </div>

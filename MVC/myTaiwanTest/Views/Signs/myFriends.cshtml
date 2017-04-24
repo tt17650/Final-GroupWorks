@@ -1,0 +1,55 @@
+﻿@using myTaiwanTest.Models
+@model FriendPlusDelFriend
+@{
+    ViewBag.Title = "myFriends";
+    Layout = "~/Views/layout/_ArctileLayout.cshtml";
+}
+
+<h3><i class="fa fa-angle-right"></i> 好友列表</h3>
+<div class="row">
+    @{int i = 0;
+        int g = 0;
+        int d = 0;
+
+        foreach (var dr in Model.friendList)
+        {
+            
+            <div class="col-lg-3 col-md-3 col-sm-3 mb" id="(@dr.ID)">
+                <div class="content-panel pn">
+                    <div id="profile-02">
+                        <div class="user">
+                            @if (Model == null || dr.faceUrl == "") {
+                                <img src="/assets-ZenTing/img/RT.jpg" class="img-circle" width="80" style="cursor: pointer;">
+                            }
+                            else {
+                                <img src="@dr.faceUrl" class="img-circle" width="80" style="cursor: pointer;">
+                            }
+                            <h4>@dr.name</h4>
+                        </div>
+                    </div>
+                    <div class="pr2-social centered">
+                        <img src="/assets-ZenTing/img/house-visiting (1).png" class="img1" style="cursor: pointer;" onclick="visitMyFriend(@dr.ID)" id="imgg@(g++)">
+                        <img src="/assets-ZenTing/img/delete (1).png" class="img-circle img2" style="cursor: pointer;" onclick="del(@dr.ID)" id="imgd@(d++)" />
+
+                    </div>
+                </div>
+            </div><!--/ col-md-4 -->
+
+
+        };
+    }
+</div>
+<script>
+
+    function del(id) {
+        window.location.href = "/signs/delFriend1/"+id;
+    }
+
+    function visitMyFriend(id) {
+        window.location.href = "/signs/searchUser/"+id;
+    }
+
+   
+
+
+</script>

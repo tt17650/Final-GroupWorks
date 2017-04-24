@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="myTaiwanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="County">
+    <Key>
+      <PropertyRef Name="countryID" />
+    </Key>
+    <Property Name="countryID" Type="Int32" Nullable="false" />
+    <Property Name="countryName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Texts" Relationship="Self.FK__Texts__location__08B54D69" FromRole="Counties" ToRole="Texts" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="FID" />
+    </Key>
+    <Property Name="FID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="friendID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sign" Relationship="Self.FK__Friends__userID__25869641" FromRole="Friends" ToRole="Sign" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="imageID" />
+    </Key>
+    <Property Name="imageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imgUrl" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="txtID" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="Int32" Nullable="false" />
+    <Property Name="imgDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="picID" />
+    </Key>
+    <Property Name="picID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="picUrl" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="txtID" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="Int32" Nullable="false" />
+    <Property Name="picDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sign">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passwords" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="faceUrl" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="coverUrl" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Friends" Relationship="Self.FK__Friends__userID__25869641" FromRole="Sign" ToRole="Friends" />
+    <NavigationProperty Name="Texts" Relationship="Self.FK__Texts__userID__2B3F6F97" FromRole="Sign" ToRole="Texts" />
+  </EntityType>
+  <EntityType Name="Text">
+    <Key>
+      <PropertyRef Name="txtID" />
+    </Key>
+    <Property Name="txtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="txtTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="txtText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="txtCreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtUpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="Int32" Nullable="false" />
+    <Property Name="locationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="County" Relationship="Self.FK__Texts__location__08B54D69" FromRole="Texts" ToRole="Counties" />
+    <NavigationProperty Name="Sign" Relationship="Self.FK__Texts__userID__2B3F6F97" FromRole="Texts" ToRole="Sign" />
+  </EntityType>
+  <Association Name="FK__Texts__location__08B54D69">
+    <End Role="Counties" Type="Self.County" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Texts" Type="Self.Text" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counties">
+        <PropertyRef Name="countryID" />
+      </Principal>
+      <Dependent Role="Texts">
+        <PropertyRef Name="location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Friends__userID__25869641">
+    <End Role="Sign" Type="Self.Sign" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Friends" Type="Self.Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sign">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Texts__userID__2B3F6F97">
+    <End Role="Sign" Type="Self.Sign" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Texts" Type="Self.Text" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sign">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Texts">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="myTaiwanEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Counties" EntityType="Self.County" />
+    <EntitySet Name="Friends" EntityType="Self.Friend" />
+    <EntitySet Name="Images" EntityType="Self.Image" />
+    <EntitySet Name="Pictures" EntityType="Self.Picture" />
+    <EntitySet Name="Signs" EntityType="Self.Sign" />
+    <EntitySet Name="Texts" EntityType="Self.Text" />
+    <AssociationSet Name="FK__Texts__location__08B54D69" Association="Self.FK__Texts__location__08B54D69">
+      <End Role="Counties" EntitySet="Counties" />
+      <End Role="Texts" EntitySet="Texts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Friends__userID__25869641" Association="Self.FK__Friends__userID__25869641">
+      <End Role="Sign" EntitySet="Signs" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Texts__userID__2B3F6F97" Association="Self.FK__Texts__userID__2B3F6F97">
+      <End Role="Sign" EntitySet="Signs" />
+      <End Role="Texts" EntitySet="Texts" />
+    </AssociationSet>
+    <FunctionImport Name="sp_BrowseText" ReturnType="Collection(myTaiwanModel.sp_BrowseText_Result)">
+      <Parameter Name="friendID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BrowseTextbyCounty" ReturnType="Collection(myTaiwanModel.sp_BrowseTextbyCounty_Result)">
+      <Parameter Name="friendID" Mode="In" Type="Int32" />
+      <Parameter Name="location" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_setCoverUrl">
+      <Parameter Name="CoverUrl" Mode="In" Type="String" />
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_setFaceUrl">
+      <Parameter Name="FaceUrl" Mode="In" Type="String" />
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BrowseSingleText" ReturnType="Collection(myTaiwanModel.sp_BrowseSingleText_Result)">
+      <Parameter Name="txtID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_BrowseText_Result">
+    <Property Type="Int32" Name="txtID" Nullable="false" />
+    <Property Type="String" Name="txtTitle" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="txtText" Nullable="false" />
+    <Property Type="DateTime" Name="txtUpdateTime" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="txtCreateTime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="countryName" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="locationDescription" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="picUrl" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="imgUrl" Nullable="true" MaxLength="64" />
+  </ComplexType>
+  <ComplexType Name="sp_BrowseTextbyCounty_Result">
+    <Property Type="Int32" Name="txtID" Nullable="false" />
+    <Property Type="String" Name="txtTitle" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="txtText" Nullable="false" />
+    <Property Type="DateTime" Name="txtUpdateTime" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="txtCreateTime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="countryName" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="locationDescription" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="picUrl" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="imgUrl" Nullable="true" MaxLength="64" />
+  </ComplexType>
+  <ComplexType Name="sp_BrowseSingleText_Result">
+    <Property Type="Int32" Name="txtID" Nullable="false" />
+    <Property Type="String" Name="txtTitle" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="txtText" Nullable="false" />
+    <Property Type="DateTime" Name="txtUpdateTime" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="txtCreateTime" Nullable="false" Precision="23" />
+    <Property Type="String" Name="countryName" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="locationDescription" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="picUrl" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="imgUrl" Nullable="true" MaxLength="64" />
+  </ComplexType>
+</Schema>

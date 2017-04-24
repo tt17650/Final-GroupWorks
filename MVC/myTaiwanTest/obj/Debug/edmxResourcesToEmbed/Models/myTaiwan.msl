@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="myTaiwanModelStoreContainer" CdmEntityContainer="myTaiwanEntities">
+    <EntitySetMapping Name="Counties">
+      <EntityTypeMapping TypeName="myTaiwanModel.County">
+        <MappingFragment StoreEntitySet="Counties">
+          <ScalarProperty Name="countryID" ColumnName="countryID" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Friends">
+      <EntityTypeMapping TypeName="myTaiwanModel.Friend">
+        <MappingFragment StoreEntitySet="Friends">
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="friendID" ColumnName="friendID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="myTaiwanModel.Image">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="imageID" ColumnName="imageID" />
+          <ScalarProperty Name="imgUrl" ColumnName="imgUrl" />
+          <ScalarProperty Name="txtID" ColumnName="txtID" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="imgDescription" ColumnName="imgDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="myTaiwanModel.Picture">
+        <MappingFragment StoreEntitySet="Pictures">
+          <ScalarProperty Name="picID" ColumnName="picID" />
+          <ScalarProperty Name="picUrl" ColumnName="picUrl" />
+          <ScalarProperty Name="txtID" ColumnName="txtID" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="picDescription" ColumnName="picDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Signs">
+      <EntityTypeMapping TypeName="myTaiwanModel.Sign">
+        <MappingFragment StoreEntitySet="Sign">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="passwords" ColumnName="passwords" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="faceUrl" ColumnName="faceUrl" />
+          <ScalarProperty Name="coverUrl" ColumnName="coverUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Texts">
+      <EntityTypeMapping TypeName="myTaiwanModel.Text">
+        <MappingFragment StoreEntitySet="Texts">
+          <ScalarProperty Name="txtID" ColumnName="txtID" />
+          <ScalarProperty Name="txtTitle" ColumnName="txtTitle" />
+          <ScalarProperty Name="txtText" ColumnName="txtText" />
+          <ScalarProperty Name="txtCreateTime" ColumnName="txtCreateTime" />
+          <ScalarProperty Name="txtUpdateTime" ColumnName="txtUpdateTime" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="locationDescription" ColumnName="locationDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_BrowseText" FunctionName="myTaiwanModel.Store.sp_BrowseText">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="myTaiwanModel.sp_BrowseText_Result">
+          <ScalarProperty Name="txtID" ColumnName="txtID" />
+          <ScalarProperty Name="txtTitle" ColumnName="txtTitle" />
+          <ScalarProperty Name="txtText" ColumnName="txtText" />
+          <ScalarProperty Name="txtUpdateTime" ColumnName="txtUpdateTime" />
+          <ScalarProperty Name="txtCreateTime" ColumnName="txtCreateTime" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+          <ScalarProperty Name="locationDescription" ColumnName="locationDescription" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="picUrl" ColumnName="picUrl" />
+          <ScalarProperty Name="imgUrl" ColumnName="imgUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BrowseTextbyCounty" FunctionName="myTaiwanModel.Store.sp_BrowseTextbyCounty">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="myTaiwanModel.sp_BrowseTextbyCounty_Result">
+          <ScalarProperty Name="txtID" ColumnName="txtID" />
+          <ScalarProperty Name="txtTitle" ColumnName="txtTitle" />
+          <ScalarProperty Name="txtText" ColumnName="txtText" />
+          <ScalarProperty Name="txtUpdateTime" ColumnName="txtUpdateTime" />
+          <ScalarProperty Name="txtCreateTime" ColumnName="txtCreateTime" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+          <ScalarProperty Name="locationDescription" ColumnName="locationDescription" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="picUrl" ColumnName="picUrl" />
+          <ScalarProperty Name="imgUrl" ColumnName="imgUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_setCoverUrl" FunctionName="myTaiwanModel.Store.sp_setCoverUrl" />
+    <FunctionImportMapping FunctionImportName="sp_setFaceUrl" FunctionName="myTaiwanModel.Store.sp_setFaceUrl" />
+    <FunctionImportMapping FunctionImportName="sp_BrowseSingleText" FunctionName="myTaiwanModel.Store.sp_BrowseSingleText">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="myTaiwanModel.sp_BrowseSingleText_Result">
+          <ScalarProperty Name="txtID" ColumnName="txtID" />
+          <ScalarProperty Name="txtTitle" ColumnName="txtTitle" />
+          <ScalarProperty Name="txtText" ColumnName="txtText" />
+          <ScalarProperty Name="txtUpdateTime" ColumnName="txtUpdateTime" />
+          <ScalarProperty Name="txtCreateTime" ColumnName="txtCreateTime" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+          <ScalarProperty Name="locationDescription" ColumnName="locationDescription" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="picUrl" ColumnName="picUrl" />
+          <ScalarProperty Name="imgUrl" ColumnName="imgUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

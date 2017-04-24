@@ -1,0 +1,171 @@
+﻿body {
+    background-color: #dcdcdc;
+}
+body::-webkit-scrollbar { 
+    display: none; 
+}
+
+.dynamicImageSpace {
+    background-color: #ff0000;
+    height: 315px;
+    width: 1100px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.largeImage {
+    margin: auto;
+    box-sizing: border-box;
+    width: 1100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.largeImageFace{
+    background:center #fff;
+    position:absolute;
+    top:250px;
+    margin-left:30px;
+    width:150px;
+    height:150px;
+    clip-path: circle(75px at center);
+}
+.largeImageFace:hover{
+     cursor: pointer;
+}
+.addFriend{
+    box-shadow: 0px 1px 0px 0px #fff6af;
+    background:linear-gradient(to bottom, #ff8800 5%, #8800 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8800', endColorstr='#ff8800',GradientType=0);
+	background-color:#ff8800;
+    border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#e0e0e0;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:0px 0px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+}
+.addFriend:hover{
+    background:linear-gradient(to bottom, #ff7700 5%, #ff7700 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff7700', endColorstr='#ff7700',GradientType=0);
+	background-color:#ff7700;
+}
+div ul li:hover ul {display: block;}
+div ul li ul{
+    position:absolute;
+    left:125px;
+    top:350px;
+    display:none;
+    cursor: pointer;
+}
+div ul li ul li{
+    display:block;
+    background:#ff8800;
+}
+
+/*台灣&動態牆區域 start*/
+.dynamicBodySpace {
+    border:solid 5px #dcdcdc;
+    background-color: #fff;
+    height: 575px;
+    width: 1100px;
+    margin: auto;
+}
+.addTextTitle{
+	border:2px solid #0078a0;
+	border-radius:10px;
+	height: 22px;
+	width: 230px;
+
+}
+
+.taiwanBar {
+    width: 30%;
+    float: left;
+    height: 575px;
+    background: #fff;
+}
+
+.dynamicTable {
+    width: 70%;
+    float: left;
+    height: 575px;
+    background: #e4e4e4;
+    overflow:auto;
+}
+
+.dynamicTable::-webkit-scrollbar { 
+    display: none; 
+}
+
+.dynamicTextSpace{
+    margin:0 0 10px 0;
+    height:150px;
+    width:97%;
+    background:#ffd800 ;
+    list-style-type: none;
+    cursor: pointer;
+    box-shadow:5px 5px 5px 1px #242424
+}
+.dynamicBarView {
+    width: 35%;
+    float: left;
+    height: 100%;
+    background: #ff8800;
+   
+}
+.dynamicBarViewValue{
+    background-color: #e4e4e4;
+    width:225px;
+    height:150px;
+    background-size:cover;
+    overflow: hidden;
+
+}
+.dynamicBarViewValueImage{
+   
+    height:150px;
+    float:right;
+    clip-path:circle(1000px at center);
+
+
+}
+
+.dynamicBarText {
+    width: 65%;
+    float: left;
+    height: 100%;
+    background: #ff8800;
+    
+}
+.dynamicBarTextValue {
+    background-color: #ff8800;
+    background-size:cover;
+    margin:7px auto;
+    overflow: hidden;
+    width:95%;
+    height:90%;
+    overflow:hidden;
+}
+
+/*台灣&動態牆區域 end*/
+
+/*d3.css*/
+.subunit-boundary {
+    fill: #008000;
+    stroke: #fff;
+    stroke-dasharray: 5, 0;
+    stroke-linejoin: round;
+}
+
+.taiwanClick {
+    fill: #ff0000;
+    stroke: #fff;
+    stroke-dasharray: 5, 0;
+    stroke-linejoin: round;
+}
+/*ADD*/

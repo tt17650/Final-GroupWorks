@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    
+    <style>
+        .single-page-nav { text-align: center; }
+        .navbar .navbar-nav {
+            display: inline-block;
+            float: none;
+            
+        }
+        #headnav{
+            height:51px;
+        }
+
+        @@media screen and (max-width:768px) {
+            #headnav {
+            display:none;
+            }
+        }
+        
+        #footerMyself {
+        display:none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-default navbar-fixed-top" id="headnav">
+        <div class="single-page-nav sticky-wrapper ">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <image src="~/image/女3-1.png" />
+                    <span style="color:red">MySocial</span>
+                </li>
+                <li>
+                    <image src="~/image/女3-1.png" />
+                    <span style="color:red">MySocial</span>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav center-block">
+                <li>
+                    <input placeholder="請輸入名稱查詢" type="text">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="city">
+                        縣市
+                        <span class="caret"></span>
+                    </button>
+                    <input type="button" value="summit" onclick="window.location.href='personal.html'" />
+
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <img src="~/image/Edit_grey_50x.png" />
+                </li>
+                <li>
+                    <img src="~/image/Team_50x.png" />
+                </li>
+                <li>
+                    <img src="~/image/top.png" />
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    @* === ↓沒有用↓ ===*@
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" id="footerMyself">
+        <div class="single-page-nav sticky-wrapper" id="tmNavbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <image src="~/image/女3-1.png" />
+                    <span style="color:red">MySocial</span>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav nav center-block ">
+                <li>
+                    <input placeholder="請輸入名稱查詢" type="text">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="city">
+                        縣市
+                        <span class="caret"></span>
+                    </button>
+                    <input type="button" value="summit" onclick="window.location.href='personal.html'" />
+
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <img src="~/image/Edit_grey_50x.png" />
+                </li>
+                <li>
+                    <img src="~/image/Team_50x.png" />
+                </li>
+                <li>
+                    <img src="~/image/top.png" />
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <script src="~/scripts/jquery-1.11.2.min.js"></script>
+    
+</body>
+
+</html>

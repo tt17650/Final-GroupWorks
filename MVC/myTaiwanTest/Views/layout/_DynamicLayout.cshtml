@@ -1,0 +1,193 @@
+﻿@using myTaiwanTest.Models
+@model AddfriendPlusText
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Social Map</title>
+    <meta charset="utf-8" />
+    <link href="/assets-YiChun/css/header.css" rel="stylesheet" />
+    <link href="/assets-YiChun/css/main.css" rel="stylesheet" />
+    <!-- d3 -->
+    <script src="/assets-YiChun/js/d3.min.js"></script>
+    <script src="/assets-YiChun/js/jquery-2.2.4.min.js"></script>
+    <script src="/assets-YiChun/js/topojson.v2.min.js"></script>
+    <!--  -->
+</head>
+<body>
+    <div class="header">
+        <nav class="top-bar">
+            <div>
+                <ul class="title-area">
+                    <li><img src="/assets-YiChun/images/header.png" class="logo" onclick="toDynamic()"/></li>
+                    
+                    @if (Model == null || Model.sign.faceUrl == "") {
+                        <li><img src="/assets-YiChun/images/YC.jpg" class="logoface" onclick="toArctile()" /></li>
+                    }
+                    else {
+                        <li><img src="@Model.sign.faceUrl" class="logoface" onclick="toArctile()" /></li> 
+                    }
+                    <li><label onclick="toArctile()">@Session["userName"]</label></li>
+                </ul>
+            </div>
+
+            <section>
+                <ul>
+                    <li class="section-icon"><a><img src="/assets-YiChun/images/logout.png" class="top-icon" onclick="toLogout()"/></a></li>
+                    <li class="section-icon"><a><img src="/assets-YiChun/images/add.png" class="top-icon" onclick="toText()"/></a></li>
+                    <li class="section-search">
+                        <form action="/signs/searchUser" method="post">
+                            <input type="button" class="search_map" />
+                            <input type="text" name="name" class="search_text" placeholder="Search" />
+                            <input type="submit" value="" class="search_button" />
+                        </form>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+
+    <div class="dynamicImageSpace">
+        <!--<img src="/assets-YiChun/images/high-resolutionImage.jpg" class="largeImage"/>-->
+        @if (Model == null || Model.sign.coverUrl == "")
+        {
+            <img src="/assets-YiChun/images/R0011094.jpg" class="largeImage" />
+        }
+        else
+        {
+            <img src="@Model.sign.coverUrl" class="largeImage" />
+        }
+    </div>
+    <div class="dynamicBodySpace">
+        <div class="taiwanBar">
+            <svg width="100%" height="575px"></svg>
+
+
+        </div>
+        @RenderBody()
+    </div>
+
+    <script>
+        function toArctile() {
+            window.location.href = "/signs/ArctileIndex"
+        }
+
+        function toDynamic() {
+            window.location.href = "/signs/Login"
+        }
+
+        function toLogout() {
+            window.location.href = "/signs/SignIn"
+        }
+
+        function toText() {
+            window.location.href = "/add/addTest"
+        }
+
+    </script>
+    <!-- 畫台灣 -->
+    <script>
+        d3.json("/assets-YiChun/js/taiwanChi.json", function (geojson) {
+            var PopulationDensity = '{\
+                "台北市": 9917.98,\
+                "嘉義市": 4495.98,\
+                "新竹市": 4199,\
+                "基隆市": 2802.83,\
+                "新北市": 1938.65,\
+                "桃園市": 1759.09,\
+                "台中市": 1249.38,\
+                "彰化縣": 1198.02,\
+                "高雄市": 941.57,\
+                "金門縣": 890.92,\
+                "台南市": 860.55,\
+                "澎湖縣": 813.97,\
+                "雲林縣": 538.31,\
+                "連江縣": 437.33,\
+                "新竹縣": 383.51,\
+                "苗栗縣": 307.19,\
+                "屏東縣": 301.12,\
+                "嘉義縣": 270.7,\
+                "宜蘭縣": 213.44,\
+                "南投縣": 123.02,\
+                "花蓮縣": 71.49,\
+                "台東縣": 62.81\
+            }';
+            var x, y, s;
+
+            var zoom = d3.zoom()
+                .scaleExtent([1, 10])
+                .on("zoom", zoomed);
+
+            function zoomed() {
+                x = d3.event.translate;
+                //y = d3.event.translate;
+                s = d3.event.scale;
+                //svg.attr("transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
+                svg.attr("transform", d3.event.transform);
+            }
+
+            var pd = JSON.parse(PopulationDensity)
+            //alert(pd["台北市"]);
+            var svg = d3.select("svg").append("g");
+
+
+            var features = topojson.feature(geojson, geojson.objects["Taiwan"]).features;
+
+            var path = d3.geoPath().projection( // 路徑產生器
+                d3.geoMercator().center([119.5825975, 26]).scale(5500).translate([60, 50]) // 座標變換函式
+
+            );
+            //color
+            var color = d3.scaleLinear().domain([50, 10000]).range(["#008000", "#000000"]);
+
+            var taiwan = svg.selectAll("path").data(features)
+              .enter().append("path").attr("d", path);
+
+            //繪製台灣地圖
+            taiwan.attr("class", "subunit-boundary").style("fill", function (d) {
+                return color(pd[d.properties["COUNTYNAME"]]);
+            });
+            //台灣-滑鼠移入顯示縣市名稱
+            d3.select("svg").selectAll("path")
+            .on("mouseover", function () {
+                d3.select(this).append("svg:title").text(function (d) {
+                    return d.properties["COUNTYNAME"];
+                });
+                if (d3.select(this).attr("class") == "subunit-boundary")
+                    d3.select(this).transition().duration(10).attr("class", "subunit-boundary").style("fill", function (d) {
+                        return "#ff6600";
+                    });
+
+            });
+            //台灣-點擊
+            d3.select("svg").selectAll("path")
+            .on("click", function (d) {
+                if (!d3.select(this).classed("taiwanClick")) {
+                    d3.select(".taiwanClick").transition().duration(500)
+                        .attr("class", "subunit-boundary").style("fill", function (d) {
+                            return color(pd[d.properties["COUNTYNAME"]]);
+                        });
+                    d3.select(this).attr("class", "taiwanClick").style("fill", "#FF0000");
+                }
+                else if (d3.select(this).classed("taiwanClick")) {
+                    d3.select(this).transition().duration(500)
+                        .attr("class", "subunit-boundary").style("fill", function (d) {
+                            return color(pd[d.properties["COUNTYNAME"]]);
+                        });
+                }
+                window.location.href = "/signs/BrowseTextByCounty/" + d.properties["COUNTYNAME"];
+                //d3.select("#circle").select("p").text("你現在位於" + d.properties["COUNTYNAME"] + "!");
+            })
+            .on("mouseout", function () {
+                //d3.select("#circle").select("p").text("隨便點個滑鼠左鍵");
+                if (d3.select(this).attr("class") == "subunit-boundary")
+                    d3.select(this).transition().duration(500).attr("class", "subunit-boundary").style("fill", function (d) {
+                        return color(pd[d.properties["COUNTYNAME"]]);
+                    });
+            });
+
+        });
+    </script>
+</body>
+</html>

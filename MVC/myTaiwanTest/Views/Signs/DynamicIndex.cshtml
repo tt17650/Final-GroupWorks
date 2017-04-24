@@ -1,0 +1,84 @@
+﻿@using myTaiwanTest.Models
+@model AddfriendPlusText
+@{
+    ViewBag.Title = "DynamicIndex";
+    Layout = "~/Views/layout/_DynamicLayout.cshtml";
+}
+
+@* 挖洞 *@
+<div class="dynamicTable">
+    <ul class="dynamicBar">
+        @if (Model != null) {
+            if (Model.browseText != null) {
+                foreach (var dr in Model.browseText) {
+                    <li class="dynamicTextSpace" onclick="singleText(@dr.txtID)">
+                    <div class="dynamicBarView">
+                        <div class="dynamicBarViewValue">
+                            @if (dr.picUrl != "" && dr.picUrl != null) {
+                                <img src="@dr.picUrl" class="dynamicBarViewValueImage" />
+                            }
+                            else {
+                                <img src="~/image/SignInPic1.jpg" class="dynamicBarViewValueImage" />
+                            }
+                        </div>
+                    </div>
+                    <div class="dynamicBarText">
+                        <div class="dynamicBarTextValue">
+                            <label style="font-size:larger">@dr.name</label><br />
+                            <label style="font-size:large;float:left">@dr.countryName</label>
+                            <label style="font-size:large;float:right">@dr.txtUpdateTime</label><br />
+                            <div style="word-break: break-all">@Html.Raw(dr.txtText)</div>
+                        </div>
+                    </div>
+                    </li>
+                }
+            }
+            else {
+                foreach (var dr in Model.browseTextbyCounty) {
+                    <li class="dynamicTextSpace" onclick="singleText(@dr.txtID)">
+                        <div class="dynamicBarView">
+                            <div class="dynamicBarViewValue">
+                                @if (dr.picUrl != "" && dr.picUrl != null) {
+                                    <img src="@dr.picUrl" class="dynamicBarViewValueImage" />
+                                }
+                                else {
+                                    <img src="~/image/SignInPic1.jpg" class="dynamicBarViewValueImage" />
+                                }
+                            </div>
+                        </div>
+                        <div class="dynamicBarText">
+                            <div class="dynamicBarTextValue">
+                                <label style="font-size:larger">@dr.name</label><br />
+                                <label style="font-size:large;float:left">@dr.countryName</label>
+                                <label style="font-size:large;float:right">@dr.txtUpdateTime</label><br />
+                                <div style="word-break: break-all">@Html.Raw(dr.txtText)</div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            }
+        }
+        @*<li class="dynamicTextSpace">
+                <div class="dynamicBarView">
+                    <div class="dynamicBarViewValue">
+                        <a>放圖片的div</a>
+                    </div>
+                </div>
+                <div class="dynamicBarText">
+                    <div class="dynamicBarTextValue">
+                        <label style="font-size:larger">UserID</label><br />
+                        <label style="font-size:large;float:left">地點</label>
+                        <label style="font-size:large;float:right">時間</label><br />
+                        <label style="word-break: break-all">234234567874567898765467898765645678654567578654567867897657678567</label>
+                    </div>
+                </div>
+            </li>*@
+    </ul>
+</div>
+
+<script>
+    function singleText(txtID) {
+        window.location.href = "/signs/singleText/" + txtID;
+
+    }
+</script>
