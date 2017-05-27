@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{63E2CEEA-16C2-45C1-9405-F57C0896BE86}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>myTaiwanTest</RootNamespace>
+    <AssemblyName>myTaiwanTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/f55a6093-92ac-4e4b-bfcf-fe9fe54a359b/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/myTaiwanTest</ApplicationInsightsResourceId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\addController.cs" />
+    <Compile Include="Controllers\SignsController.cs" />
+    <Compile Include="Controllers\uploadImageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddEditTextModel.cs" />
+    <Compile Include="Models\AddfriendPlusText.cs" />
+    <Compile Include="Models\County.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Friend.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FriendPlusDelFriend.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\locations.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MyTaiwan.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyTaiwan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyTaiwan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyTaiwan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyTaiwan.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Picture.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sign.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_BrowseTextbyCounty_Result.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_BrowseText_Result.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Text.cs">
+      <DependentUpon>MyTaiwan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets-YiChun\ckeditor\adapters\jquery.js" />
+    <Content Include="assets-YiChun\ckeditor\build-config.js" />
+    <Content Include="assets-YiChun\ckeditor\ckeditor.js" />
+    <Content Include="assets-YiChun\ckeditor\config.js" />
+    <Content Include="assets-YiChun\ckeditor\contents.css" />
+    <Content Include="assets-YiChun\ckeditor\lang\en.js" />
+    <Content Include="assets-YiChun\ckeditor\lang\zh-cn.js" />
+    <Content Include="assets-YiChun\ckeditor\lang\zh.js" />
+    <Content Include="assets-YiChun\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="assets-YiChun\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="assets-YiChun\ckeditor\plugins\icons.png" />
+    <Content Include="assets-YiChun\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="assets-YiChun\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="assets-YiChun\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="assets-YiChun\ckeditor\samples\css\samples.css" />
+    <Content Include="assets-YiChun\ckeditor\samples\img\github-top.png" />
+    <Content Include="assets-YiChun\ckeditor\samples\img\header-bg.png" />
+    <Content Include="assets-YiChun\ckeditor\samples\img\header-separator.png" />
+    <Content Include="assets-YiChun\ckeditor\samples\img\logo.png" />
+    <Content Include="assets-YiChun\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="assets-YiChun\ckeditor\samples\index.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\js\sample.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\js\sf.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\ajax.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\api.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\appendto.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\divreplace.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\index.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\inlineall.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\jquery.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\readonly.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\sample.css" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\sample.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\tabindex.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\uicolor.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\dialog.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\dialog_ie.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\dialog_ie7.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\dialog_ie8.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\dialog_iequirks.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\editor.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\editor_gecko.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\editor_ie.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\editor_ie7.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\editor_ie8.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\editor_iequirks.css" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\icons.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\icons_hidpi.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\arrow.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\close.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\hidpi\close.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\hidpi\lock-open.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\hidpi\lock.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\hidpi\refresh.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\lock-open.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\lock.png" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\images\refresh.png" />
+    <Content Include="assets-YiChun\ckeditor\styles.js" />
+    <Content Include="assets-YiChun\css\main.css" />
+    <Content Include="assets-YiChun\css\%28backup%29.css" />
+    <Content Include="assets-YiChun\js\d3.min.js" />
+    <Content Include="assets-ZenTing\img\blog-bg.jpg" />
+    <Content Include="assets-ZenTing\img\checkbox-gray.png" />
+    <Content Include="assets-ZenTing\img\delete %281%29.png" />
+    <Content Include="assets-ZenTing\img\Earth.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-01.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-02.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-03.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-04.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-05.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-06.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-07.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-08.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-09.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-10.jpg" />
+    <Content Include="assets-ZenTing\img\friends\fr-11.jpg" />
+    <Content Include="assets-ZenTing\img\house-visiting %281%29.png" />
+    <Content Include="assets-ZenTing\img\instagram.jpg" />
+    <Content Include="assets-ZenTing\img\login-bg.jpg" />
+    <Content Include="assets-ZenTing\img\logout %281%29.png" />
+    <Content Include="assets-ZenTing\img\logout.png" />
+    <Content Include="assets-ZenTing\img\logoutWhite.jpg" />
+    <Content Include="assets-ZenTing\img\lorde.jpg" />
+    <Content Include="assets-ZenTing\img\magnifier-tool %281%29.png" />
+    <Content Include="assets-ZenTing\img\mask.png" />
+    <Content Include="assets-ZenTing\img\ny.jpg" />
+    <Content Include="assets-ZenTing\img\portfolio\port01.jpg" />
+    <Content Include="assets-ZenTing\img\portfolio\port02.jpg" />
+    <Content Include="assets-ZenTing\img\portfolio\port03.jpg" />
+    <Content Include="assets-ZenTing\img\portfolio\port04.jpg" />
+    <Content Include="assets-ZenTing\img\portfolio\port05.jpg" />
+    <Content Include="assets-ZenTing\img\portfolio\port06.jpg" />
+    <Content Include="assets-ZenTing\img\product.jpg" />
+    <Content Include="assets-ZenTing\img\product.png" />
+    <Content Include="assets-ZenTing\img\profile-01.jpg" />
+    <Content Include="assets-ZenTing\img\profile-02.jpg" />
+    <Content Include="assets-ZenTing\img\radio-gray.png" />
+    <Content Include="assets-ZenTing\img\RT.jpg" />
+    <Content Include="assets-ZenTing\img\SocialMap.png" />
+    <Content Include="assets-ZenTing\img\SocialMapwhite.png" />
+    <Content Include="assets-ZenTing\img\ui-danro.jpg" />
+    <Content Include="assets-ZenTing\img\ui-divya.jpg" />
+    <Content Include="assets-ZenTing\img\ui-sam.jpg" />
+    <Content Include="assets-ZenTing\img\ui-sherman.jpg" />
+    <Content Include="assets-ZenTing\img\ui-zac.jpg" />
+    <Content Include="assets-ZenTing\img\weather.jpg" />
+    <Content Include="assets-ZenTing\img\YC.jpg" />
+    <Content Include="assets-ZenTing\img\zoom.png" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style2.css" />
+    <Content Include="css\StyleSheet.css" />
+    <Content Include="assets-YiChun\js\d3MyTaiwan.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="image\SignInPic1.jpg" />
+    <Content Include="Models\MyTaiwan.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyTaiwan.edmx</DependentUpon>
+      <LastGenOutput>MyTaiwan.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MyTaiwan.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyTaiwan.edmx</DependentUpon>
+      <LastGenOutput>MyTaiwan.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="assets-YiChun\ckeditor\CHANGES.md" />
+    <Content Include="assets-YiChun\ckeditor\LICENSE.md" />
+    <Content Include="assets-YiChun\ckeditor\README.md" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="assets-YiChun\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="assets-YiChun\ckeditor\skins\flat\readme.md" />
+    <EntityDeploy Include="Models\MyTaiwan.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyTaiwan.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MyTaiwan.edmx.diagram">
+      <DependentUpon>MyTaiwan.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.11.2.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.scrollUp.min.js" />
+    <Content Include="Scripts\jquery.singlePageNav.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="users\Milktea123\MilkteaFace.jpg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Signs\Create.cshtml" />
+    <Content Include="Views\Signs\Delete.cshtml" />
+    <Content Include="Views\Signs\Details.cshtml" />
+    <Content Include="Views\Signs\Edit.cshtml" />
+    <Content Include="Views\Signs\Index.cshtml" />
+    <Content Include="Views\Signs\ArctileIndex.cshtml" />
+    <Content Include="Views\Signs\Login.cshtml" />
+    <Content Include="Views\layout\_ArctileLayout.cshtml" />
+    <Content Include="Views\Signs\myFriend.cshtml" />
+    <Content Include="Views\layout\_DynamicLayout.cshtml" />
+    <Content Include="Views\Signs\DynamicIndex.cshtml" />
+    <Content Include="Views\layout\_FriendLayout.cshtml" />
+    <Content Include="Views\Signs\FriendPage.cshtml" />
+    <Content Include="Views\layout\_AddTextLayout.cshtml" />
+    <Content Include="Views\Signs\addText.cshtml" />
+    <Content Include="Views\add\addTest.cshtml" />
+    <Content Include="Views\layout\_AddTestLayoutTest.cshtml" />
+    <Content Include="Views\uploadImage\ArctileIndex.cshtml" />
+    <Content Include="Views\Signs\myFriends.cshtml" />
+    <Content Include="Views\layout\_SingleTextLayout.cshtml" />
+    <Content Include="Views\Signs\SingleText.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="addTestImages\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="assets-YiChun\images\" />
+    <Folder Include="assets-ZenTing\css\" />
+    <Folder Include="assets-ZenTing\font-awesome\" />
+    <Folder Include="assets-ZenTing\fonts\" />
+    <Folder Include="assets-ZenTing\js\" />
+    <Folder Include="assets-ZenTing\lineicons\" />
+    <Folder Include="coverImage\" />
+    <Folder Include="faceImage\" />
+    <Folder Include="Pictures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49701</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49701/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 封裝。請啟用 NuGet 封裝還原，以下載該封裝。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,167 @@
+﻿.header{
+    margin:-8px 0 0 0;
+    height:45px;
+    width:100%;
+}
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
+    top: 0px;
+    background: #ff8800;
+    margin-bottom: 0;
+    z-index:2;
+}
+.top-bar .title-area {
+    float: left;
+}
+
+.top-bar .logo {
+    margin-left: 50px;
+    width: 106.68px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.top-bar .logoface {
+    margin-top: 2px;
+    margin-left: 50px;
+    height: 40px;
+    width: 40px;
+    clip-path: circle(20px at center);
+    cursor: pointer;
+}
+
+.top-bar label {
+    font-size: 0.875rem;
+    color: #4d4d4d;
+    cursor: pointer;
+    display: block;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-top: 12px;
+    margin-left: 10px;
+    /* Styles for required inputs */
+}
+
+nav div ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ff8800;
+}
+
+div nav div li {
+    float: left;
+}
+
+
+.search_map {
+    border: 0 none;
+    background: #ff7700 center no-repeat;
+    background-image: url('../images/taiwan.png');
+    background-size: 25px;
+    width: 30px;
+    height: 30px;
+    margin-top: 7px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    border-radius: 5px 0px 0px 5px/5px 5px 5px 5px;
+}
+
+    .search_map:hover {
+        background-color: #0078a0;
+        cursor: pointer; /* 鼠標變手指*/
+    }
+
+.search_text {
+    max-width: 200px;
+    padding: 15px 0 15px 20px; /*文字位置*/
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 30px;
+    margin-right: 0;
+    margin-top: 7px;
+    color: #0078a0;
+    outline: none; /*文字輸入格框線*/
+    background: #ffffff;
+    float: left;
+    box-sizing: border-box; /*文字輸入方塊不超出form*/
+    transition: all 0.15s;
+}
+
+.search_button {
+    border: 0 none;
+    background: #ff7700 center no-repeat;
+    background-image: url('../images/magnifier.png');
+    background-size: 17px;
+    height: 30px;
+    width: 30px;
+    float: left;
+    padding: 0;
+    margin-top: 7px;
+    border-radius: 0px 5px 5px 0px/5px;
+}
+
+    .search_button:hover {
+        background-color: #0078a0;
+        cursor: pointer; /* 鼠標變手指*/
+    }
+
+div nav section ul {
+    list-style-type: none;
+    margin: 0;
+    margin-right: 50px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ff8800;
+}
+
+.section-icon {
+    float: right;
+}
+
+.section-search {
+    float: left;
+}
+
+div nav section li a {
+    max-width: 20px;
+    max-height: 20px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+div nav section li a:hover {
+        background-color: #0078a0;
+        cursor: pointer;
+    }
+
+div nav section ul li form {
+    position: absolute;
+    left: 50%;
+}
+
+
+
+
+.top-icon {
+    position: relative;
+    top: -10px;
+    max-width: 20px;
+    max-height: 20px;
+}
+/* 以上為網頁板header的css*/
+
+/* 以下RWD的css*/
